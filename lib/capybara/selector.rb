@@ -163,7 +163,7 @@ Capybara.add_selector(:button) do
 
     res_xpath = input_btn_xpath.union(btn_xpath).union(image_btn_xpath)
 
-    res_xpath = expression_filters.keys.inject(res_xpath) { |memo, ef| memo[find_by_attr(ef, options[ef])] }
+    res_xpath = [:value, :title, :type].inject(res_xpath) { |memo, ef| memo[find_by_attr(ef, options[ef])] }
 
     res_xpath
   end
